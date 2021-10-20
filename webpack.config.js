@@ -5,11 +5,13 @@ const { ModuleFederationPlugin } = require("webpack").container;
 const dependencies = require("./package.json").dependencies;
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: path.resolve("src/index.ts"),
   output: {
     filename: "index.js",
-    path: path.resolve("dist"),
+      path: path.resolve("dist"),
+      globalObject: "this",
+    libraryTarget: 'amd'
   },
   resolve: {
     alias: {
@@ -19,7 +21,7 @@ module.exports = {
   },
   devServer: {
     port: 8080,
-  },
+    },
   module: {
     rules: [
       {
@@ -38,24 +40,29 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new ModuleFederationPlugin({
-      name: "RecentWorksDropDown",
-      filename: "remoteEntry.js",
-      remotes: {},
-      exposes: {
-        "./RecentWorksDropDown": "./src/components/RecentWorksDropDown",
-      },
-      shared: {
-        ...dependencies,
-        react: {
-          singleton: true,
-          requiredVersion: dependencies.react,
-        },
-        "react-dom": {
-          singleton: true,
-          requiredVersion: dependencies["react-dom"],
-        },
-      },
-    }),
+      new ModuleFederationPlugin({
+          name: "RecentWorksDropDown",
+          filename: "remoteEntry.js",
+          remotes: {},
+          exposes: {
+              "./RecentWorksDropDown": "./src/components/RecentWorksDropDown",
+          },
+          shared: [
+              {
+                  react: {
+                      eager: true,
+                      singleton: true,
+                      requiredVersion: false
+                  }
+              },
+              {
+                  "react-dom": {
+                      eager: true,
+                      singleton: true,
+                      requiredVersion: false
+                  },
+              },
+          ]
+      }),
   ],
 };
