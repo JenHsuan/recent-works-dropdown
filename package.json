@@ -53,6 +53,7 @@
     "@types/react": "^17.0.30",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.4.0",
+    "file-loader": "^6.2.0",
     "style-loader": "^3.3.0",
     "ts-loader": "^9.2.6",
     "webpack-dev-server": "^4.3.1"

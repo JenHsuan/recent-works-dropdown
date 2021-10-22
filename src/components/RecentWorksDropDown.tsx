@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import style from './RecentWorksDropDown.module.css';
 
-export class RecentWorksDropDown extends Component<any, any> {
+type Props = {
+    title: string;
+};
+export class RecentWorksDropDown extends Component<Props, any> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -9,15 +12,21 @@ export class RecentWorksDropDown extends Component<any, any> {
         }
     }
     render() {
+        const {
+            title
+        } = this.props;
         return (
             <div className={style.wrapper}>
                 <div className={style.dropdownContainer} onClick={() => {
                     this.setState((prevState:any) => ({ showItems: !prevState.showItems}))
                 }}>
-                    <div className={style.dropdownContainerItem}>Recent works</div>
+                    <div className={style.dropdownContainerItem}>{ title }</div>
                 </div>
                 { this.state.showItems && (
-                <div className={style.dropdownItem}></div>)}
+                    <div className={style.dropdownItem}>
+                        <div className={style.dropdownItemEmptyTitle}>Oops! It's empty</div>
+                        <img className={style.dropdownItemEmptyImage} src="https://raw.githubusercontent.com/JenHsuan/ALayman/master/views/images/empty-min.png" alt="" />
+                </div>)}
                 </div>
         )
     }
