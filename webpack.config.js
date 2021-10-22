@@ -5,13 +5,10 @@ const { ModuleFederationPlugin } = require("webpack").container;
 const dependencies = require("./package.json").dependencies;
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: path.resolve("src/index.ts"),
   output: {
-    filename: "index.js",
-      path: path.resolve("dist"),
-      globalObject: "this",
-    libraryTarget: 'amd'
+    publicPath: "auto"
   },
   resolve: {
     alias: {
