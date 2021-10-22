@@ -24,8 +24,10 @@
     "webpack-cli": "^4.9.0"
   },
   "scripts": {
-    "start": "webpack serve",
+    "start": "node server.js",
+    "dev": "webpack serve",
     "build": "webpack --config webpack.config.js",
+    "heroku-postbuild": "webpack --config webpack.config.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
