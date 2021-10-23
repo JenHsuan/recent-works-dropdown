@@ -5,7 +5,7 @@ const months = 6;
 type Props = {
     title: string;
     gitHubUserName: string;
-    sendGaEvent: (a:any, b:any, c:any, d:any) => {};
+    sendGaEvent: (catogoryConstant:string, actionConstant:string, value:number, label:string) => {};
     actionConstant: string;
     catogoryConstant: string;
 };
