@@ -4,6 +4,7 @@
     font-size: 14px;
     width: 150px;
     border: 1px solid #ccc;
+    box-shadow: 0 1px 2px #86B7EF;
     background-color: #eee;
     border-radius: 20px;
     display: flex;
@@ -40,10 +41,14 @@
     overflow-x: hidden;
     box-shadow: 0 1px 2px #000;
 }
+.dropdownItemEmptyContainer {
+}
 .dropdownItemEmptyImage {
     width: 100%;
 }
 .dropdownItemEmptyTitle {
     text-align: center;
     margin: 10px;
+    font-weight: 600;
+    color: rgb(134, 183, 239, .8);
 }

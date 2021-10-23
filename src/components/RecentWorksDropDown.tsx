@@ -8,7 +8,8 @@ export class RecentWorksDropDown extends Component<Props, any> {
     constructor(props: any) {
         super(props);
         this.state = {
-            showItems: false
+            showItems: false,
+            items: []
         }
     }
     render() {
@@ -22,12 +23,25 @@ export class RecentWorksDropDown extends Component<Props, any> {
                 }}>
                     <div className={style.dropdownContainerItem}>{ title }</div>
                 </div>
-                { this.state.showItems && (
-                    <div className={style.dropdownItem}>
-                        <div className={style.dropdownItemEmptyTitle}>Oops! It's empty</div>
-                        <img className={style.dropdownItemEmptyImage} src="https://raw.githubusercontent.com/JenHsuan/ALayman/master/views/images/empty-min.png" alt="" />
-                </div>)}
-                </div>
+                {this.state.showItems && (
+                    <>
+                        {this.state.items.length !== 0 ? (
+                            <>
+                                <div className={style.dropdownItem}>
+                                </div>
+                            </>) : (
+                            <>
+                                <div className={style.dropdownItem}>
+                                    <div className={style.dropdownItemEmptyContainer}>
+                                        <div className={style.dropdownItemEmptyTitle}>Oops! It's empty</div>
+                                        <img className={style.dropdownItemEmptyImage} src="https://raw.githubusercontent.com/JenHsuan/ALayman/master/views/images/empty-min.png" alt="" />
+                                    </div>
+                                </div>
+                            </>
+                        )}
+                    </>
+                )}
+            </div>
         )
     }
 }
