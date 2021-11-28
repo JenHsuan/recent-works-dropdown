@@ -2,14 +2,19 @@ import React, { Component } from 'react'
 import style from './RecentWorksDropDown.module.css';
 const months = 6;
 
-type Props = {
+type DropDownProps = {
     title: string;
     gitHubUserName: string;
     sendGaEvent: (catogoryConstant:string, actionConstant:string, value:number, label:string) => {};
     actionConstant: string;
     catogoryConstant: string;
 };
-export class RecentWorksDropDown extends Component<Props, any> {
+
+type DropDownState = {
+    showItems: boolean;
+    items: any[];
+};
+export class RecentWorksDropDown extends Component<DropDownProps, DropDownState> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -27,6 +32,7 @@ export class RecentWorksDropDown extends Component<Props, any> {
         fetch(`https://api.github.com/users/${gitHubUserName}/repos`)
                 .then(val => val.json())
                 .then(val => {
+                    console.log(val)
                     let sortedRepos = val.filter((ele: any) => {
                         let timeArray = ele.updated_at.split('-');
                         timeArray[2] = timeArray[2].split('T') ? timeArray[2].split('T')[0] : 0;
@@ -66,9 +72,8 @@ export class RecentWorksDropDown extends Component<Props, any> {
                 {this.state.showItems && (
                     <>
                         {this.state.items.length !== 0 ? (
-                            <>
+                            <div className={style.dropdownItemsContainer}>
                                 <div className={style.dropdownItem}>
-                                    <div className={style.dropdownItemTitle}>{`Last ${months} month`}</div>
                                     {this.state.items.map((repo:any) => (
                                         <div className={style.dropdownRepoItem}>
                                             <div className={style.dropdownRepoItemTitle} onClick={() => {
@@ -87,13 +92,11 @@ export class RecentWorksDropDown extends Component<Props, any> {
                                         </div>
                                     ))}
                                 </div>
-                            </>) : (
+                            </div>) : (
                             <>
-                                <div className={style.dropdownItem}>
-                                    <div className={style.dropdownItemEmptyContainer}>
-                                        <div className={style.dropdownItemEmptyTitle}>Oops! It's empty</div>
-                                        <img className={style.dropdownItemEmptyImage} src="https://raw.githubusercontent.com/JenHsuan/ALayman/master/views/images/empty-min.png" alt="" />
-                                    </div>
+                                <div className={style.dropdownItemEmptyContainer}>
+                                    <div className={style.dropdownItemEmptyTitle}>Oops! It's empty</div>
+                                    <img className={style.dropdownItemEmptyImage} src="https://raw.githubusercontent.com/JenHsuan/ALayman/master/views/images/empty-min.png" alt="" />
                                 </div>
                             </>
                         )}

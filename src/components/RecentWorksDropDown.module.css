@@ -31,16 +31,12 @@
     left: 115px;
 }
 .dropdownItem {
-    border: 1px solid #ccc;
     border-radius: 3px;
-    height: 300px;
-    width: 200px;
-    margin-top: 5px;
-    margin-left: -30px;
-    background-color: #fff;
-    overflow-x: hidden;
-    box-shadow: 0 1px 2px #000;
-    padding-bottom: 20px;
+    width: 820px;
+    background-color: #eee;
+    overflow-x: auto;
+    display: flex;
+    border: 1px solid #ccc;
 }
 .dropdownItemTitle {
     text-align: center;
@@ -48,6 +44,14 @@
     font-weight: 600;
 }
 .dropdownItemEmptyContainer {
+    margin-top: 5px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin-left: -50px;
+}
+.dropdownItemsContainer {
+    margin-top: 5px;
+    margin-left: -650px;
 }
 .dropdownItemEmptyImage {
     width: 100%;
@@ -59,15 +63,17 @@
     color: rgb(134, 183, 239, .8);
 }
 .dropdownRepoItem {
-    margin: 10px 10px 0;
+    margin: 3px 0px 3px 3px;
+    min-width: 200px;
     border: 1px solid #ccc;
     border-radius: 3px;
     height: 120px;
     display: flex;
     flex-direction: column;
+    background-color: #fff;
 }
 .dropdownRepoItem:hover {
-    box-shadow: 1px 2px 2px #000;
+    box-shadow: 2px 2px 2px #000;
 }
 .dropdownRepoItemTitle {
     text-align: center;

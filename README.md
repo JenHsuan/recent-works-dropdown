@@ -4,7 +4,7 @@
 ### Usages
 * Serve locally
 ```
-yarn start
+yarn dev
 ```
 * Build
 ```
