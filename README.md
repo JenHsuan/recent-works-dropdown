@@ -23,11 +23,16 @@ source ~/.bash_profile
 ```
 
 ## Deployment to Fly.io
-
+* Sign in
 ```
-flyctl launch
-flyctl deploy
-flyctl open
+fly auth login
+```
+
+* Create configurations and deploy to Fly.io
+```
+fly launch
+fly deploy
+fly open
 ```
 
 ## Usages
